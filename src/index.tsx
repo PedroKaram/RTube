@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.tsx';
 import reportWebVitals from './reportWebVitals.js';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/Routes.tsx';
 
 const rootElement: HTMLElement | null = document.getElementById('root');
 if (rootElement) {
@@ -12,7 +13,7 @@ if (rootElement) {
   root.render(
     <MantineProvider defaultColorScheme='dark'>
       <React.StrictMode>
-        <App />
+        <RouterProvider router={router} />
       </React.StrictMode>
     </MantineProvider>
   );

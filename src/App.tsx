@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar.tsx';
 import { AppShell, Flex, Button, useMantineColorScheme, useComputedColorScheme } from '@mantine/core';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import React from 'react';
+import { Outlet } from 'react-router';
 
 function App() {
   const {setColorScheme} = useMantineColorScheme();
@@ -26,6 +27,7 @@ function App() {
       </AppShell.Header>
       <AppShell.Navbar p="md">
         <Navbar />
+        <Outlet />
       </AppShell.Navbar>
     </AppShell>
   );
