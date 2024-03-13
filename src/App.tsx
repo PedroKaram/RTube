@@ -14,9 +14,9 @@ function App() {
     setColorScheme(computedColorScheme === 'dark' ? 'light' : 'dark');
   }
 
-  const routes = mockdata.map((data, index) => (
-    <Route key={index} path={data.path} element={data.element} />
-  ));
+  // const routes = mockdata.map((data, index) => (
+  //   <Route key={index} path={data.path} element={data.element} />
+  // ));
 
   return (
     <AppShell
@@ -37,7 +37,7 @@ function App() {
         <Flex style={{ padding: '20px 20px' }}>
           <Routes>
             {mockdata.map((data, index) => (
-              <Route key={index} path={data.path} element={data.element} />
+              <Route key={index} path={data.path} element={data.element ? <data.element /> : null} />
             ))}
           </Routes>
         </Flex>
