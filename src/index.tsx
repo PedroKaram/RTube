@@ -1,20 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.tsx';
 import reportWebVitals from './reportWebVitals.js';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import { BrowserRouter, RouterProvider, Routes } from 'react-router-dom';
+import App from './App';
 
 const rootElement: HTMLElement | null = document.getElementById('root');
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-    <MantineProvider defaultColorScheme='dark'>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </MantineProvider>
+    <BrowserRouter>
+      <MantineProvider defaultColorScheme='dark'>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </MantineProvider>
+    </BrowserRouter>
   );
 
   // If you want to start measuring performance in your app, pass a function

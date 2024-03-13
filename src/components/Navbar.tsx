@@ -1,96 +1,75 @@
 import { useState } from 'react';
-import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core';
+import { Tooltip, UnstyledButton, Stack, Anchor, rem } from '@mantine/core';
 import {
   IconHome2,
-  IconGauge,
-  IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconCalendarStats,
   IconUser,
   IconSettings,
+  IconVideo,
+  IconVolume,
+  IconHistory,
 } from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './Navbar.module.css';
 import React from 'react';
+import classes from './Navbar.module.css';
+import VideoPage from '../pages/VideoPage/VideoPage';
+import AudioOnlyPage from '../pages/AudioOnlyPage/AudioOnlyPage';
+import HistoryPage from '../pages/HistoryPage/HistoryPage';
+import AccountPage from '../pages/AccountPage/AccountPage';
+import SettingsPage from '../pages/SettingsPage/SettingsPage';
+import { NavLink } from 'react-router-dom';
 
-const mainLinksMockdata = [
-  { icon: IconHome2, label: 'Home' },
-  { icon: IconGauge, label: 'Dashboard' },
-  { icon: IconDeviceDesktopAnalytics, label: 'Analytics' },
-  { icon: IconCalendarStats, label: 'Releases' },
-  { icon: IconUser, label: 'Account' },
-  { icon: IconFingerprint, label: 'Security' },
-  { icon: IconSettings, label: 'Settings' },
-];
+interface NavbarLinkProps {
+  icon: typeof IconHome2;
+  label: string;
+  path: string;
+  active?: boolean;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  element: any;
+}
 
-const linksMockdata = [
-  'Security',
-  'Settings',
-  'Dashboard',
-  'Releases',
-  'Account',
-  'Orders',
-  'Clients',
-  'Databases',
-  'Pull Requests',
-  'Open Issues',
-  'Wiki pages',
+function NavbarLink(props: NavbarLinkProps) {
+  return (
+    <NavLink to={props.path}>
+      <Tooltip label={props.label} position="right" transitionProps={{ duration: 0 }}>
+        <UnstyledButton onClick={(event) => props.onClick(event)} className={classes.link} data-active={props.active || undefined}>
+          <props.icon style={{ width: rem(24), height: rem(45), color: "#c0c0c0" }} stroke={1.5} />
+        </UnstyledButton>
+      </Tooltip>
+    </NavLink>
+  );
+}
+
+export const mockdata = [
+  { icon: IconVideo, label: 'Video', path: '/', element: () => <VideoPage /> },
+  { icon: IconVolume, label: 'Audio Only', path: '/AudioOnly', element: () => <AudioOnlyPage /> },
+  { icon: IconHistory, label: 'History', path: '/History', element: () => <HistoryPage /> },
+  { icon: IconUser, label: 'Account', path: '/Account', element: () => <AccountPage /> },
+  { icon: IconSettings, label: 'Settings', path: '/Settings', element: () => <SettingsPage /> },
 ];
 
 export function Navbar() {
-  const [active, setActive] = useState('Releases');
-  const [activeLink, setActiveLink] = useState('Settings');
+  const [active, setActive] = useState(0);
 
-  const mainLinks = mainLinksMockdata.map((link) => (
-    <Tooltip
-      label={link.label}
-      position="right"
-      withArrow
-      transitionProps={{ duration: 0 }}
+  const links = mockdata.map((link, index) => (
+    <NavbarLink
+      {...link}
       key={link.label}
-    >
-      <UnstyledButton
-        onClick={() => setActive(link.label)}
-        className={classes.mainLink}
-        data-active={link.label === active || undefined}
-      >
-        <link.icon style={{ width: rem(22), height: rem(22) }} stroke={1.5} />
-      </UnstyledButton>
-    </Tooltip>
+      path={link.path}
+      active={index === active}
+      onClick={() => setActive(index)}
+      element={link.element}
+    />
   ));
 
-  const links = linksMockdata.map((link) => (
-    <a
-      className={classes.link}
-      data-active={activeLink === link || undefined}
-      href="#"
-      onClick={(event) => {
-        event.preventDefault();
-        setActiveLink(link);
-      }}
-      key={link}
-    >
-      {link}
-    </a>
-  ));
+ 
 
   return (
     <nav className={classes.navbar}>
-      <div className={classes.wrapper}>
-        <div className={classes.aside}>
-          <div className={classes.logo}>
-            <MantineLogo type="mark" size={30} />
-          </div>
-          {mainLinks}
-        </div>
-        <div className={classes.main}>
-          <Title order={4} className={classes.title}>
-            {active}
-          </Title>
-
+      <div className={classes.navbarMain}>
+        <Stack className={classes.stacks} justify="center" gap={0}>
           {links}
-        </div>
+        </Stack>
       </div>
+      
     </nav>
   );
 }
