@@ -38,11 +38,11 @@ function NavbarLink(props: NavbarLinkProps) {
 }
 
 export const mockdata = [
-  { icon: IconVideo, label: 'Video', path: '/', element: <VideoPage /> },
-  { icon: IconVolume, label: 'Audio Only', path: '/AudioOnly', element: <AudioOnlyPage /> },
-  { icon: IconHistory, label: 'History', path: '/History', element: <HistoryPage /> },
-  { icon: IconUser, label: 'Account', path: '/Account', element: <AccountPage /> },
-  { icon: IconSettings, label: 'Settings', path: '/Settings', element: <SettingsPage /> },
+  { icon: IconVideo, label: 'Video', path: '/', element: () => <VideoPage /> },
+  { icon: IconVolume, label: 'Audio Only', path: '/AudioOnly', element: () => <AudioOnlyPage /> },
+  { icon: IconHistory, label: 'History', path: '/History', element: () => <HistoryPage /> },
+  { icon: IconUser, label: 'Account', path: '/Account', element: () => <AccountPage /> },
+  { icon: IconSettings, label: 'Settings', path: '/Settings', element: () => <SettingsPage /> },
 ];
 
 export function Navbar() {
