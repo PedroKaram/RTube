@@ -5,7 +5,6 @@ import reportWebVitals from './reportWebVitals.js';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { BrowserRouter, RouterProvider, Routes } from 'react-router-dom';
-import { router } from './routes/Routes';
 import App from './App';
 
 const rootElement: HTMLElement | null = document.getElementById('root');
@@ -15,9 +14,7 @@ if (rootElement) {
     <BrowserRouter>
       <MantineProvider defaultColorScheme='dark'>
         <React.StrictMode>
-
           <App />
-
         </React.StrictMode>
       </MantineProvider>
     </BrowserRouter>

@@ -2,9 +2,7 @@ import './App.css';
 import { Navbar, mockdata } from './components/Navbar';
 import { AppShell, Flex, Button, useMantineColorScheme, useComputedColorScheme } from '@mantine/core';
 import { FaSun, FaMoon } from 'react-icons/fa';
-import React from 'react';
-// import { Outlet, Route, Routes } from 'react-router';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const { setColorScheme } = useMantineColorScheme();
@@ -14,9 +12,9 @@ function App() {
     setColorScheme(computedColorScheme === 'dark' ? 'light' : 'dark');
   }
 
-  // const routes = mockdata.map((data, index) => (
-  //   <Route key={index} path={data.path} element={data.element} />
-  // ));
+  const routes = mockdata.map((data, index) => (
+    <Route key={index} path={data.path} element={data.element ? <data.element /> : null} />
+  ));
 
   return (
     <AppShell
@@ -36,14 +34,11 @@ function App() {
       <AppShell.Main style={{ marginLeft: '100px' }}>
         <Flex style={{ padding: '20px 20px' }}>
           <Routes>
-            {mockdata.map((data, index) => (
-              <Route key={index} path={data.path} element={data.element ? <data.element /> : null} />
-            ))}
+            {routes}
           </Routes>
         </Flex>
       </AppShell.Main>
     </AppShell>
-
   );
 }
 

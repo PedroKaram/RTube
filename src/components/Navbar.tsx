@@ -15,6 +15,7 @@ import AudioOnlyPage from '../pages/AudioOnlyPage/AudioOnlyPage';
 import HistoryPage from '../pages/HistoryPage/HistoryPage';
 import AccountPage from '../pages/AccountPage/AccountPage';
 import SettingsPage from '../pages/SettingsPage/SettingsPage';
+import { NavLink } from 'react-router-dom';
 
 interface NavbarLinkProps {
   icon: typeof IconHome2;
@@ -27,13 +28,13 @@ interface NavbarLinkProps {
 
 function NavbarLink(props: NavbarLinkProps) {
   return (
-    <Anchor href={props.path}>
+    <NavLink to={props.path}>
       <Tooltip label={props.label} position="right" transitionProps={{ duration: 0 }}>
         <UnstyledButton onClick={(event) => props.onClick(event)} className={classes.link} data-active={props.active || undefined}>
           <props.icon style={{ width: rem(24), height: rem(45), color: "#c0c0c0" }} stroke={1.5} />
         </UnstyledButton>
       </Tooltip>
-    </Anchor>
+    </NavLink>
   );
 }
 
