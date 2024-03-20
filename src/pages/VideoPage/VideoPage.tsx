@@ -1,4 +1,4 @@
-import InputComponent from '../../components/InputComponent'
+import SendableInputComponent from '../../components/SendableInputComponent';
 import classes from './VideoPage.module.css';
 
 interface Props {}
@@ -6,8 +6,8 @@ interface Props {}
 const VideoPage = (props: Props) => {
     return (
         <div className={classes.mainContent}>
-          <h1>Video Page</h1>
-            <InputComponent />
+            <h1>Video Page</h1>
+            <SendableInputComponent />
         </div>
     )
 }
