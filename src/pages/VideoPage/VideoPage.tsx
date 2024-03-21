@@ -6,8 +6,7 @@ interface Props {}
 const VideoPage = (props: Props) => {
     return (
         <div className={classes.mainContent}>
-            <h1>Video Page</h1>
-            <SendableInputComponent />
+            <SendableInputComponent title="Video Page" />
         </div>
     )
 }

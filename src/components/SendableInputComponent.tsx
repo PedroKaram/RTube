@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Input, Button } from "@mantine/core";
 import classes from './SendableInputComponent.module.css';
 import { IconBrandYoutubeFilled, IconDownload } from '@tabler/icons-react';
-import { json } from "react-router";
 
-interface InputComponentProps {}
+interface InputComponentProps {
+  title: string;
+}
 
 const downloadIcon = <IconDownload />
 const ytIcon = <IconBrandYoutubeFilled />;
@@ -41,15 +42,18 @@ const SendableInputComponent = (props: InputComponentProps) => {
     };
 
     return (
-      <form onSubmit={handleSubmit}>
-        <Input className={classes.input}
-        value={inputValue}
-        onChange={handleInputChange}
-        variant="filled" size="lg" radius="xl" placeholder="Input component"
-        leftSection={ytIcon} />
+      <>
+        <h1>{props.title}</h1>
+        <form onSubmit={handleSubmit}>
+          <Input className={classes.input}
+          value={inputValue}
+          onChange={handleInputChange}
+          variant="filled" size="lg" radius="xl" placeholder="Insert Video URL"
+          leftSection={ytIcon} />
 
-        <Button className={classes.button} type="submit" leftSection={downloadIcon} >Download</Button>
-      </form>
+          <Button className={classes.button} type="submit" leftSection={downloadIcon} >Download</Button>
+        </form>
+      </>
     ); 
 }
 
