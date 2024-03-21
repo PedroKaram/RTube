@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Project Core
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+RTube is an open-source project that allows users to download videos
+from YouTube passing its URL. The user can also choose between download
+full video and audio or downloading just its audio.
 
-## Available Scripts
+## Installation for Linux
 
-In the project directory, you can run:
+Start cloning the repository:
 
-### `npm start`
+```
+git clone git@github.com:PedroKaram/RTube.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Now you need to execute init.sh file, this will install the following dependencies:
+<details>
+  <summary>Dependencies List</summary>
+  <ul>
+    <li>libwebkit2gtk-4.0-dev</li>
+    <li>build-essential</li>
+    <li>curl</li>
+    <li>wget</li>
+    <li>file</li>
+    <li>libssl-dev</li>
+    <li>libgtk-3-dev</li>
+    <li>libayatana-appindicator3-dev</li>
+    <li>librsvg2-dev</li>
+  </ul>
+</details>
+
+To execute the init.sh file, you need to turn it into a executable first:
+make sure you are in projects directory
+
+```
+cd RTube
+chmod +x init.sh
+```
+
+Then run `./init.sh` to execute it
+
+Now you have to install rust for Linux:
+<a href="https://linuxh2o.com/how-to-install-latest-rust-on-linux/#google_vignette" target="_blank">How to install latest Rust on Linux</a>
+
+Now install node dependencies using yarn:
+
+```
+yarn install
+```
+
+## Installation for Windows
+
+Start cloning the repository:
+
+```
+git clone git@github.com:PedroKaram/RTube.git
+```
+
+Now you have to install rust, follow the official documentation:
+<a href="https://www.rust-lang.org/tools/install" target="_blank">Rust Installation Official Website</a>
+
+## Building and running the project
+
+To run the project you have to build it and start it using yarn and tauri:
+
+```
+yarn build
+yarn tauri dev
+```
+
+Now the app should be running in development mode.\
+Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Check React documentation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<a href="https://facebook.github.io/create-react-app/docs/getting-started" target="_blank">Create React App documentation</a>
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="https://reactjs.org/" target="_blank">React documentation</a>
