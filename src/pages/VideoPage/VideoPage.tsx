@@ -1,10 +1,14 @@
-import React from 'react';
+import SendableInputComponent from '../../components/SendableInputComponent';
+import classes from './VideoPage.module.css';
 
 interface Props {}
 
 const VideoPage = (props: Props) => {
     return (
-        <div>Video Page</div>
+        <div className={classes.mainContent}>
+            <h1>Video Page</h1>
+            <SendableInputComponent />
+        </div>
     )
 }
 
